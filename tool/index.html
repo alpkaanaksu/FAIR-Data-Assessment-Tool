@@ -5,11 +5,6 @@
     <meta charset="utf-8"/>
     <title>FAIR self-assessment tool</title>
 
-
-
-
-
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
     </script>
@@ -80,32 +75,42 @@
 
             var fscore = parseInt($("#q1").val()) + parseInt($("#q2").val()) +
                     parseInt($("#q3").val()) + parseInt($("#q4").val());
+            var fscorePercent = (fscore / 17.0) * 100;
 
-
-            $("#fbar").attr('style', "width: " +  (fscore / 17.0) * 100 + "%");
+            $("#fbar").attr('style', "width: " +  fscorePercent + "%");
+            $("#fpercent").text(fscorePercent.toFixed(2) + "%");
             // $("#fscore").html(fscore);
             $("#fstars").html(createStars(fscore/17.0 * 5));
 
 
             var ascore = parseInt($("#q5").val()) + parseInt($("#q6").val()) +
                     parseInt($("#q7").val());
-            $("#abar").attr('style', "width: " +  (ascore / 10.0) * 100 + "%");
+            var ascorePercent = (ascore / 10.0) * 100;
+
+            $("#abar").attr('style', "width: " + ascorePercent + "%");
+            $("#apercent").text(ascorePercent.toFixed(2) + "%");
             // $("#ascore").html(ascore);
             $("#astars").html(createStars(ascore/10.0 * 5));
 
             var iscore = parseInt($("#q8").val()) + parseInt($("#q9").val()) +
                     parseInt($("#q10").val());
-            $("#ibar").attr('style', "width: " +  (iscore / 8.0) * 100 + "%");
+            var iscorePercent = (iscore / 8.0) * 100
+            $("#ibar").attr('style', "width: " + iscorePercent + "%");
+            $("#ipercent").text(iscorePercent.toFixed(2) + "%")
             // $("#iscore").html(iscore);
             $("#istars").html(createStars(iscore/8.0 * 5));
 
             var rscore = parseInt($("#q11").val()) + parseInt($("#q12").val());
-            $("#rbar").attr('style', "width: " +  (rscore / 7.0) * 100 + "%");
+            var rscorePercent = (rscore / 7.0) * 100;
+            $("#rbar").attr('style', "width: " + rscorePercent + "%");
+            $("#rpercent").text(rscorePercent.toFixed(2) + "%");
             // $("#rscore").html(rscore);
             $("#rstars").html(createStars(rscore/7.0 * 5));
 
             var tscore = fscore / 17 + ascore / 10.0 + iscore / 8.0 + rscore / 6.0;
-            $("#tbar").attr('style', "width: " +  tscore * 25.0 + "%");
+            var tscorePercent = tscore * 25.0;
+            $("#tbar").attr('style', "width: " + tscorePercent + "%");
+            $("#tpercent").text(tscorePercent.toFixed(2) + "%");
             console.log(tscore)
             $("#tstars").html(createStars(tscore/4.0 * 5));
 
@@ -285,7 +290,8 @@
                             </div>
                         </form>
                         <div class="w3-border">
-                        <div id="fbar" class="w3-container w3-padding w3-green" style="width:0;">
+                        <div id="fbar" class="w3-container w3-green" style="width:0;">
+                            <span id="fpercent" style="margin: 0.25rem 0.5rem;"></span>
                             <div class="w3-center" id="demo"></div>
                         </div>
                         </div>
@@ -377,7 +383,8 @@
 
                         </form>
                         <div class="w3-border">
-                            <div id="abar" class="w3-container w3-padding w3-green" style="width:1%">
+                            <div id="abar" class="w3-container w3-green" style="width:1%">
+                                <span id="apercent" style="margin: 0.25rem 0.5rem;"></span>
                                 <div class="w3-center" id="idemo"></div>
                             </div>
                         </div>
@@ -478,7 +485,8 @@
 
                         </form>
                         <div class="w3-border">
-                            <div id="ibar" class="w3-container w3-padding w3-green" style="width:1%">
+                            <div id="ibar" class="w3-container w3-green" style="width:1%">
+                                <span id="ipercent" style="margin: 0.25rem 0.5rem;"></span>
                                 <div class="w3-center" id="iidemo"></div>
                             </div>
                         </div>
@@ -544,7 +552,8 @@
 
                         </form>
                         <div class="w3-border">
-                            <div id="rbar" class="w3-container w3-padding w3-green" style="width:1%">
+                            <div id="rbar" class="w3-container w3-green" style="width:1%">
+                                <span id="rpercent" style="margin: 0.25rem 0.5rem;"></span>
                                 <div class="w3-center" id="rdemo"></div>
                             </div>
                         </div>
@@ -558,7 +567,8 @@
         <h4>Total across F.A.I.R</h4>
 
         <div class="w3-border">
-            <div id="tbar" class="w3-container w3-padding w3-green" style="width:0%">
+            <div id="tbar" class="w3-container w3-green" style="width:0%">
+                <span id="tpercent" style="margin: 0.25rem 0.5rem;"></span>
                 <div class="w3-center" id="tdemo"></div>
             </div>
         </div>
